@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 1;
+}
+
+.logo {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.text-field {
+    visibility: hidden;
+}
+
+.text-field.show-text-field {
+    visibility: visible;
+}
