@@ -10,7 +10,23 @@ const theme = createTheme({
     //     }
     // },
 
+    
+    typography: {
+        h2: {
+            fontFamily: "'Ubuntu', sans-serif",
+            fontWeight: 300,
+            fontSize: '3rem'
+        }
+    },
+
     components: {
+        MuiSkeleton: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'grey'
+                }
+            }
+        },
         MuiPaginationItem: {
             styleOverrides: {
                 root: {

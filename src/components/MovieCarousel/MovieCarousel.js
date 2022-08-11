@@ -4,9 +4,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import classes from './MovieCarousel.module.css';
 import { useSelector } from 'react-redux/es/exports';
+import { useMediaQuery } from '@mui/material';
 
 
 const MovieCarousel = (props) => {
+
+    const mediaMatchesMaxWidth1414 = useMediaQuery('(max-width: 1414px)')
 
     const genres = useSelector(state => state.genres.genres)
 
@@ -49,7 +52,7 @@ const MovieCarousel = (props) => {
                     <div>{item['release_date'] || item['first_air_date']}</div>
                   </div>
                   <div className={classes['description']}>
-                    {item['description']}
+                    {mediaMatchesMaxWidth1414 ? `${item['description'].substring(0, 150)}...` : item['description']}
                   </div>
                   <div className={classes['genres']}>
                     <span>Genres: </span>

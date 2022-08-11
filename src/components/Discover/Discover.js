@@ -7,7 +7,8 @@ import Category from '../Category/Category'
 import useAxios from '../../hooks/useAxios'
 import ColumnStack from '../ui/ColumnStack'
 import { getTrendingUrl, getTopKidMoviesUrl, getAnimationsUrl, movieGenresUrl, tvGenresUrl } from '../../utils/requests/endpoints'
-
+import {Skeleton, CircularProgress} from '@mui/material';
+import { CategorySkeleton } from '../Category/Category'
 
 const Movies = () => {
     const dispatch = useDispatch();
@@ -85,16 +86,18 @@ const Movies = () => {
     }
 
     if (tmdbDataLoading) {
-        tmdbContent = <h2>Loading!</h2>
-        carouselContent = <div>Loading!</div>
+        tmdbContent = <CategorySkeleton />
+        carouselContent = <div style={{height: '500px', width:'100%', display: 'flex', alignItems: 'center', justifyContent:'center'}}>
+            <CircularProgress />
+        </div>
     }
 
     if (topKidMoviesDataLoading) {
-        topKidMoviesContent = <h2>Loading!</h2>
+        topKidMoviesContent = <CategorySkeleton />
     }
 
     if (animationsLoading) {
-        animationsContent = <h2>Loading!</h2>
+        animationsContent = <CategorySkeleton/>
                             
     }
 
@@ -135,7 +138,7 @@ const Movies = () => {
     }
 
     return ( 
-            <ColumnStack>
+            <ColumnStack sx={{width: '100%'}}>
                 {carouselContent}
                 {tmdbContent}  
                 {topKidMoviesContent}   

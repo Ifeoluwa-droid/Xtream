@@ -1,5 +1,5 @@
 import React from "react";
-import { Pagination } from "@mui/material";
+import { Pagination, Typography, Box, Skeleton } from "@mui/material";
 import MovieCard from "../MovieCard/MovieCard";
 import classes from './Category.module.css';
 import { original } from "../../config/config";
@@ -23,8 +23,8 @@ const Category = React.forwardRef((props, ref) => {
 
     return ( 
         <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem'}} ref={ref}>
-            <h2 style={{color: 'white', fontSize: '3rem', fontWeight: '300', fontFamily: "'Ubuntu', sans-serif"}}>{props.categoryHeading}</h2>
-            <div className={classes.movies}>
+            <Typography variant="h2" sx={{color: 'white'}} className={classes['category-heading']}>{props.categoryHeading}</Typography>
+            <Box className={classes.movies}>
                 {props.categoryMovies.map(movie => 
                         <MovieCard 
                             key={movie['id']}
@@ -37,11 +37,36 @@ const Category = React.forwardRef((props, ref) => {
                             date={movie['release_date']}
                         />
                     )}
-            </div>
+            </Box>
             <Pagination sx={{marginTop: 5}} count={props.pageCount > 500 ? 500 : props.pageCount} color='primary' onChange={handlePageChange} page={props.currentPage}/>
         </ColumnStack>
      );
 })
+
+export const CategorySkeleton = () => {
+    return (
+        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem', width: '100%'}}>
+            <Typography
+                variant="h2"
+                width="100%"
+            >
+                <Skeleton
+                    variant="rectangular"
+                />
+            </Typography>
+            <div className={classes.movies}>
+                {Array(20).fill('').map((el) => 
+                        <Skeleton 
+                            variant="rectangular"
+                            width={'10rem'}
+                            height='236.925px'
+                        />
+                    )}
+            </div>
+            {/* <Pagination sx={{marginTop: 5}} count={props.pageCount > 500 ? 500 : props.pageCount} color='primary' onChange={handlePageChange} page={props.currentPage}/> */}
+        </ColumnStack>
+    )
+}
  
 export default Category;
 

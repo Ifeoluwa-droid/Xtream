@@ -5,3 +5,21 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+@media screen and (max-width: 1414px) {
+    .category-heading {
+        font-size: 2rem !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .movies {
+        justify-content: center
+    }
+
+    .category-heading {
+        width: 100%;
+        text-align: center;
+    }
+}
+
