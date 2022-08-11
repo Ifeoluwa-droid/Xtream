@@ -5,6 +5,7 @@ import classes from './Category.module.css';
 import { original } from "../../config/config";
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
+import ColumnStack from "../ui/ColumnStack";
 
 const Category = React.forwardRef((props, ref) => {
 
@@ -21,8 +22,8 @@ const Category = React.forwardRef((props, ref) => {
 
 
     return ( 
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem'}} ref={ref}>
-            <h2 style={{color: 'white', fontSize: '3rem', fontWeight: '500'}}>{props.categoryHeading}</h2>
+        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem'}} ref={ref}>
+            <h2 style={{color: 'white', fontSize: '3rem', fontWeight: '300', fontFamily: "'Ubuntu', sans-serif"}}>{props.categoryHeading}</h2>
             <div className={classes.movies}>
                 {props.categoryMovies.map(movie => 
                         <MovieCard 
@@ -37,8 +38,8 @@ const Category = React.forwardRef((props, ref) => {
                         />
                     )}
             </div>
-            <Pagination sx={{marginTop: 5}} count={props.pageCount > 500 ? 500 : props.pageCount} color='primary' onChange={handlePageChange}/>
-        </div>
+            <Pagination sx={{marginTop: 5}} count={props.pageCount > 500 ? 500 : props.pageCount} color='primary' onChange={handlePageChange} page={props.currentPage}/>
+        </ColumnStack>
      );
 })
  

@@ -1,0 +1,1 @@
+export const TMDBDOMAIN = 'https://api.themoviedb.org/3'
