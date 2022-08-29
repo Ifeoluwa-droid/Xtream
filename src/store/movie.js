@@ -21,11 +21,13 @@ const moviesSlice = createSlice({
     reducers: {
         setMovies(state, {payload}) {
             state.moviesData.movies = payload.results.map(item => ({
+                'id': item['id'],
                 'poster_path': item['poster_path'],
                 'vote_average': item['vote_average'],
                 'genre_ids': item['genre_ids'],
                 'title': item['title'],
-                'release_date': item['release_date'].slice(0, 4)
+                'release_date': item['release_date'].slice(0, 4),
+                'media_type': item['media_type']
             }))
         },
         setPage(state, {payload}) {

@@ -1,7 +1,6 @@
 .movie-card {
     position: relative;
     height: fit-content;
-    width: 10rem;
     text-align: center;
     border-radius: .3rem;
     transition: all .3s;
@@ -67,6 +66,11 @@
     transform: translateX(-50%);
     color: #fff;
     border-radius: .3rem;
+}
+
+.rating {
+    position: absolute;
+    top: 0
 }
 
 @keyframes slide-up {

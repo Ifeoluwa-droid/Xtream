@@ -1,13 +1,13 @@
 import React, { useCallback, useRef, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setMovies, setPage, setMoviesSummary, setTopKidMovies, setKidMoviesPage, setAnimations, setAnimationsPage } from '../../store/discover'
+import { setMovies, setPage, setMoviesSummary, setKidMoviesPage, setAnimations, setAnimationsPage } from '../../store/discover'
 import { setGenres } from '../../store/genre'
 import MovieCarousel from '../MovieCarousel/MovieCarousel'
 import Category from '../Category/Category'
 import useAxios from '../../hooks/useAxios'
 import ColumnStack from '../ui/ColumnStack'
 import { getTrendingUrl, getTopKidMoviesUrl, getAnimationsUrl, movieGenresUrl, tvGenresUrl } from '../../utils/requests/endpoints'
-import {Skeleton, CircularProgress} from '@mui/material';
+import { Skeleton, CircularProgress } from '@mui/material';
 import { CategorySkeleton } from '../Category/Category'
 
 const Movies = () => {
@@ -21,21 +21,15 @@ const Movies = () => {
 
 
     // Refs
-    const kidMoviesSectionRef = useRef()
     const popularMovies = useRef()
     const animationsRef = useRef()
 
 
     // Url endpoints
     const trendingUrl = getTrendingUrl(moviesData.currentPage)
-    const topKidMoviesUrl = getTopKidMoviesUrl(moviesData.currentKidMoviesPage)
     const animationsUrl = getAnimationsUrl(moviesData.currentAnimationsPage)
 
-
-    console.log(trendingUrl)
-
     const {isLoading: tmdbDataLoading, fetchError: tmdbDataFetchError} = useAxios(trendingUrl, setMovies, setMoviesSummary)
-    const {isLoading: topKidMoviesDataLoading, fetchError: topKidMoviesFetchError} = useAxios(topKidMoviesUrl, setTopKidMovies)
     const {isLoading: animationsLoading, fetchError: animationsFetchError} = useAxios(animationsUrl, setAnimations)
 
     
@@ -67,7 +61,6 @@ const Movies = () => {
 
 
     let tmdbContent;
-    let topKidMoviesContent;
     let animationsContent;
     let carouselContent;
 
@@ -76,13 +69,8 @@ const Movies = () => {
         carouselContent = <div>An error occurred!</div>
     }
 
-    if (topKidMoviesFetchError) {
-        topKidMoviesContent = <h2>An error occurred!</h2>
-    }
-
     if (animationsFetchError) {
-        animationsContent = <h2>An error occurred!</h2>
-                           
+        animationsContent = <h2>An error occurred!</h2>                     
     }
 
     if (tmdbDataLoading) {
@@ -90,10 +78,6 @@ const Movies = () => {
         carouselContent = <div style={{height: '500px', width:'100%', display: 'flex', alignItems: 'center', justifyContent:'center'}}>
             <CircularProgress />
         </div>
-    }
-
-    if (topKidMoviesDataLoading) {
-        topKidMoviesContent = <CategorySkeleton />
     }
 
     if (animationsLoading) {
@@ -115,17 +99,6 @@ const Movies = () => {
                           />
     }
 
-    if (!topKidMoviesDataLoading && moviesData && genres) {
-        topKidMoviesContent = <Category
-                                setPage={setKidMoviesPage}
-                                ref={kidMoviesSectionRef}
-                                categoryHeading="General (Latest Releases)"
-                                categoryMovies={moviesData.topKidMovies}
-                                pageCount={moviesData.topKidMoviesCount}
-                                currentPage={moviesData.currentKidMoviesPage}
-                              />
-    }
-
     if (!animationsLoading && moviesData && genres) {
         animationsContent = <Category
                                 setPage={setAnimationsPage}
@@ -141,7 +114,6 @@ const Movies = () => {
             <ColumnStack sx={{width: '100%'}}>
                 {carouselContent}
                 {tmdbContent}  
-                {topKidMoviesContent}   
                 {animationsContent} 
             </ColumnStack>
         );

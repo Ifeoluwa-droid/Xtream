@@ -1,18 +1,28 @@
 import React from 'react'
-import { Tabs } from "@mui/material";
-import Tab from "@mui/material/Tab";
-import { useState } from "react";
-import classes from './Header.module.css';
-import SearchIcon from '@mui/icons-material/Search';
-import { Movie, Tv } from "@mui/icons-material";
-import HomeIcon from '@mui/icons-material/Home';
-import { useHistory } from "react-router-dom";
-import WindowIcon from '@mui/icons-material/Window';
-
+import { styled, Tabs, useMediaQuery } from "@mui/material"
+import Tab from "@mui/material/Tab"
+import { useState } from "react"
+import classes from './Header.module.css'
+import SearchIcon from '@mui/icons-material/Search'
+import { Movie, Tv } from "@mui/icons-material"
+import HomeIcon from '@mui/icons-material/Home'
+import { useNavigate } from "react-router-dom"
+import WindowIcon from '@mui/icons-material/Window'
+import { Outlet } from 'react-router-dom'
+import MenuIcon from '@mui/icons-material/Menu'
+import {IconButton} from '@mui/material'
+import { openDrawer as openReduxDrawer } from '../../store/drawer'
+import { useDispatch } from 'react-redux'
+ 
 const Header = () => {
 
-    const [tabValue, setTabValue] = useState(0);
+    const [tabValue, setTabValue] = useState(0)
 
+
+    const mediaMatchesMinWidth900 = useMediaQuery('(min-width: 900px)')
+    const mediaMatchesMaxWidth700 = useMediaQuery('(max-width: 700px)')
+
+    const dispatch = useDispatch()
 
     const tabValueToRouteMap = {
       0: '/discover',
@@ -21,48 +31,61 @@ const Header = () => {
       3: '/search'
     }
 
-    const history = useHistory();
+    const openDrawer = () => {
+        dispatch(openReduxDrawer())
+    }
 
-    history.replace(tabValueToRouteMap[tabValue]);
+    const navigate = useNavigate();
+
+    // navigate(tabValueToRouteMap[tabValue], {replace: true});
 
     const tabValueChangeHandler = (event, newTabValue) => {
         setTabValue(newTabValue);
-        history.push(tabValueToRouteMap[newTabValue]);
+        navigate(tabValueToRouteMap[newTabValue], {replace: true});
     }
 
+    const StyledTab = styled(Tab)({
+        textTransform: 'capitalize', 
+        margin: '0 1rem', 
+        color: '#fff',
+        fontSize: !mediaMatchesMinWidth900 && '.8rem'
+    })
+
     return ( 
-        <header className={classes.header}>
-            <p className={classes.logo}>MOVIE-FLEX</p>
-            <Tabs value={tabValue} onChange={tabValueChangeHandler} centered>
-                  <Tab 
+        <>
+        <header className={classes.header} style={{
+            justifyContent: mediaMatchesMinWidth900 ? 'space-between' : mediaMatchesMaxWidth700 ? 'flex-end' : 'center'
+        }}>
+            {mediaMatchesMinWidth900 && <p className={classes.logo}>MOVIE-FLEX</p>}
+            {mediaMatchesMaxWidth700 && <IconButton onClick={openDrawer}><MenuIcon sx={{color: "white"}} /></IconButton>}
+            {!mediaMatchesMaxWidth700 && <Tabs value={tabValue} onChange={tabValueChangeHandler} centered>
+                  <StyledTab 
                       icon={<HomeIcon/>}
                       iconPosition="start"
                       label="Discover" 
-                      style={{textTransform: 'capitalize', margin: '0 1rem', color: '#fff'}}
                   />
-                  <Tab 
+                  <StyledTab 
                       icon={<Movie/>}
                       iconPosition="start"
                       label="Movies" 
-                      style={{textTransform: 'capitalize', margin: '0 1rem', color: '#fff'}}
                   />
-                  <Tab 
+                  <StyledTab 
                       icon={<Tv/>}
                       iconPosition="start"
                       label="TV Shows"
-                      style={{textTransform: 'capitalize', margin: '0 1rem', color: '#fff'}}
                   />
-                  <Tab 
+                  <StyledTab 
                       icon={<SearchIcon/>}
                       iconPosition="start"
                       label="Search"
-                      style={{textTransform: 'capitalize', margin: '0 1rem', color: '#fff'}}
                   />
-            </Tabs>
-            <div style={{visibility: 'hidden'}}>
+            </Tabs>}
+            {mediaMatchesMinWidth900 && <div style={{visibility: 'hidden'}}>
 
-            </div>
+            </div>}
         </header>
+        <Outlet/>
+        </>
      );
 }
  

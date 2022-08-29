@@ -7,15 +7,11 @@ const initialState = {
         movies: [],
         moviesSummary: [],
         currentPage: 1,
-        topKidMovies: [],
-        topKidMoviesCount: 1, ///
-        currentKidMoviesPage: 1,
         animations: [],
         animationsCount: 1, ///
         currentAnimationsPage: 1,
     }
 }
-
 
 const getBackdrops = (moviesData) => {
     return moviesData.map(movie => original + movie['backdrop_path'])
@@ -32,7 +28,8 @@ const movieSlice = createSlice({
                 'vote_average': item['vote_average'],
                 'genre_ids': item['genre_ids'] || '',
                 'title': item['title'] || item['name'],
-                'release_date': item['release_date'] ? item['release_date'].slice(0, 4) : item['first_air_date'] ? item['first_air_date'].slice(0, 4) : ''
+                'release_date': item['release_date'] ? item['release_date'].slice(0, 4) : item['first_air_date'] ? item['first_air_date'].slice(0, 4) : '',
+                'media_type': item['media_type']
             }));
         },
         setPage(state, {payload}) {
@@ -50,29 +47,19 @@ const movieSlice = createSlice({
                 }
             ))
         },
-        setTopKidMovies(state, {payload}) {
-            state.moviesData.topKidMovies = payload.results.map(item => ({
-                'id': item['id'],
-                'poster_path': item['poster_path'],
-                'vote_average': item['vote_average'],
-                'genre_ids': item['genre_ids'],
-                'title': item['title'],
-                'release_date': item['release_date'].slice(0, 4)
-            }))
-
-            state.moviesData.topKidMoviesCount = payload['total_pages']
-        },
         setKidMoviesPage(state, {payload}) {
             state.moviesData.currentKidMoviesPage = payload
         },
         setAnimations(state, {payload}) {
+            console.log(payload)
             state.moviesData.animations = payload.results.map(item => ({
                 'id': item['id'],
                 'poster_path': item['poster_path'],
                 'vote_average': item['vote_average'],
                 'genre_ids': item['genre_ids'],
                 'title': item['title'],
-                'release_date': item['release_date'].slice(0, 4)
+                'release_date': item['release_date'].slice(0, 4),
+                'media_type': 'movie'
             }))
 
             state.moviesData.animationsCount = payload['total_pages']
@@ -86,5 +73,4 @@ const movieSlice = createSlice({
 
 
 export const { setMovies, setPage, setMoviesSummary, setTopKidMovies, setKidMoviesPage, setAnimations, setAnimationsPage} = movieSlice.actions;
-
 export default movieSlice.reducer;

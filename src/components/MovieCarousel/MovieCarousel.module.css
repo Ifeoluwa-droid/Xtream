@@ -26,13 +26,10 @@
     color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     align-items: flex-start;
-    justify-content: center;
 }
 
 .title {
-    font-size: 3rem;
     letter-spacing: 4px;
 }
 
@@ -50,8 +47,6 @@
     flex-direction: row;
     align-items: center;
     width: 30%;
-    gap: 3rem;
-
 }
 
 .description {
@@ -63,7 +58,6 @@
 
 .genres {
     display: flex;
-    gap: 1.5rem
 }
 
 .genres > div p {

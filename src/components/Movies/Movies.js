@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setMovies, setPage, setMoviesSummary } from '../../store/movie'
 import { original } from '../../config/config'
 import MovieCard from '../MovieCard/MovieCard'
-import classes from './Movies.module.css';
-import Pagination from '@mui/material/Pagination';
+import classes from './Movies.module.css'
+import Pagination from '@mui/material/Pagination'
 import MovieCarousel from '../MovieCarousel/MovieCarousel'
 import useAxios from '../../hooks/useAxios'
+import Header from '../Header/Header'
 
 
 const Movies = () => {
@@ -49,7 +50,10 @@ const Movies = () => {
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div className={classes.movies}>
                 {moviesData.movies.map(movie => 
-                        <MovieCard 
+                        <MovieCard
+                            mediaType={movie['media_type']}
+                            key={movie['id']}
+                            id={movie['id']}
                             imgSrc={`${original}${movie['poster_path']}`}
                             voteAverage={movie['vote_average']}
                             voteCount={movie['vote_count']}
@@ -66,7 +70,9 @@ const Movies = () => {
     </div>
     }
 
-    return content
+    return <>
+        {content}
+    </>
 }
  
 export default Movies

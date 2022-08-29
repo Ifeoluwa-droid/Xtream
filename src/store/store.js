@@ -3,13 +3,16 @@ import discoverMovieReducer from './discover';
 import tvSeriesReducer from './tv';
 import movieReducer from './movie';
 import genreReducer from './genre'
+import drawerReducer from './drawer'
+
 
 const store = configureStore({
     reducer: {
         discover: discoverMovieReducer,
         tvSeries: tvSeriesReducer,
         movies: movieReducer,
-        genres: genreReducer
+        genres: genreReducer,
+        drawer: drawerReducer
     }
 })
 

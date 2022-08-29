@@ -1,21 +1,16 @@
 import { createTheme } from "@mui/material";
 
-const theme = createTheme({
-    // palette: {
-    //     primary: {
-    //         main: 
-    //     },
-    //     secondary: {
-    //         main: 
-    //     }
-    // },
-
-    
+const theme = createTheme({    
     typography: {
         h2: {
             fontFamily: "'Ubuntu', sans-serif",
             fontWeight: 300,
-            fontSize: '3rem'
+            fontSize: '2rem'
+        },
+        h3: {
+            fontFamily: "'Ubuntu', sans-serif",
+            fontWeight: 300,
+            fontSize: '1rem'
         }
     },
 
@@ -38,12 +33,20 @@ const theme = createTheme({
         MuiTabs: {
             styleOverrides: {
                 indicator: {
-                    backgroundColor: "#fff"
+                    backgroundColor: "#fff",
+                    width: '30%'
                 }
             }
         },
 
         MuiTab: {
+            styleOverrides: {
+                root: {
+                    '&.Mui-selected': {
+                        color: '#fff'
+                    }
+                }
+            },
             defaultProps: {
                 disableRipple: true
             },

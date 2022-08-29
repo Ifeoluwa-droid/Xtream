@@ -3,39 +3,43 @@ import Header from "./components/Header/Header";
 import DiscoverMovies from "./components/Discover/Discover";
 import Movies from "./components/Movies/Movies";
 import './App.css';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 import Tv from './components/Tv/Tv';
 import Search from './components/Search/Search';
 import MovieDetails from "./components/MovieDetails/MovieDetails";
+import AppLayout from "./components/sharedlayout/AppLayout";
 
 const App = () => {
   return ( 
     <div>
-      <Header />
       <main className='main'>
-        <Switch>
-          <Route path='/' exact>
-            <Redirect to='/discover' />
+        <Routes>
+          <Route path='/' element={<AppLayout />}>
+            <Route path="" element={<Navigate to="/discover" replace />} />
+            <Route path='discover'>
+              <Route path="" element={<DiscoverMovies/>}></Route>
+            </Route>
+            <Route path='movies'>
+              <Route path="" element={<Movies />}></Route>
+            </Route>
+            <Route path='tv'>
+              <Route path="" element={<Tv/>}></Route>
+            </Route>
+            <Route path='search' element={<Search />}/>
           </Route>
-          <Route path='/discover' exact>
-            <DiscoverMovies/>
-          </Route>
-          <Route path='/movies' exact>
-            <Movies />
-          </Route>
-          <Route path='/tv' exact>
-            <Tv/>
-          </Route>
-          <Route path='/search' exact>
-            <Search />
-          </Route>
-          <Route path='/discover/movies/:movieId' exact>
-            <MovieDetails />
-          </Route>
-        </Switch>
+          <Route path='/discover/:showType/:showId' element={<MovieDetails />} />
+          <Route path='/movies/:showType/:showId' element={<MovieDetails />} />
+          <Route path='/tv/:showType/:showId' element={<MovieDetails />} />
+        </Routes>
       </main>
     </div>
    );
 }
  
 export default App;
+
+
+            
+            
+            
+            

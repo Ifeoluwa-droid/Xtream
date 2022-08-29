@@ -8,6 +8,7 @@ import classes from './Tv.module.css'
 import Pagination from '@mui/material/Pagination'
 import MovieCarousel from '../MovieCarousel/MovieCarousel'
 import useAxios from '../../../src/hooks/useAxios'
+import Header from '../Header/Header'
 
 const Movies = () => {
     const dispatch = useDispatch()
@@ -49,6 +50,9 @@ const Movies = () => {
                         <div className={classes.movies}>
                             {tvSeriesData.tvSeries.map(series => 
                                 <MovieCard 
+                                    mediaType={series['media_type']}
+                                    key={series['id']}
+                                    id={series['id']}
                                     imgSrc={series['poster_path'] ? `${original}${series['poster_path']}` : unavailable}
                                     voteAverage={series['vote_average']}
                                     voteCount={series['vote_count']}
@@ -62,7 +66,9 @@ const Movies = () => {
                         }
                     </div>
     }
-    return content;
+    return <>
+        {content}
+    </>
 }
  
 export default Movies;

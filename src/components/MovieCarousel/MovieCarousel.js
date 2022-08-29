@@ -10,6 +10,10 @@ import { useMediaQuery } from '@mui/material';
 const MovieCarousel = (props) => {
 
     const mediaMatchesMaxWidth1414 = useMediaQuery('(max-width: 1414px)')
+    const mediaMatchesMaxWidth1000 = useMediaQuery('(max-width: 1000px)')
+    const mediaMatchesMaxWidth900 = useMediaQuery('(max-width: 900px)')
+    const mediaMatchesMaxWidth700 = useMediaQuery('(max-width: 700px)')
+
 
     const genres = useSelector(state => state.genres.genres)
 
@@ -44,19 +48,26 @@ const MovieCarousel = (props) => {
                 <div className={classes['blanket']}>
                   
                 </div>
-                <div className={classes['movie-summary']}>
-                  <h2 className={classes['title']}>{item['title']}</h2>
-                  <div>
-                    <div className={classes['vote-average-wrap']}><span className={classes['vote-average']}>{item['vote_average']}</span> / 10</div>
+                <div className={classes['movie-summary']} style={{
+                   justifyContent: mediaMatchesMaxWidth900 ? 'flex-end' : 'center',
+                   paddingBottom: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '2.5rem' : '5rem' : '5rem',
+                   gap: mediaMatchesMaxWidth700 ? '1rem' : '2rem'
+                }}>
+                  <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '1.5rem' : '2rem' : '3rem'}}>{item['title']}</h2>
+                  <div style={{
+                    width: mediaMatchesMaxWidth1000 ? '100%' : '30%',
+                    gap: mediaMatchesMaxWidth1000 ? mediaMatchesMaxWidth700 ? '1rem' : '2rem' : '3rem'
+                  }}>
+                    <div className={classes['vote-average-wrap']}><span className={classes['vote-average']}>{String(item['vote_average']).slice(0,3)}</span> / 10</div>
                     <span>|</span>
                     <div>{item['release_date'] || item['first_air_date']}</div>
                   </div>
-                  <div className={classes['description']}>
+                  {!mediaMatchesMaxWidth1000 && <div className={classes['description']}>
                     {mediaMatchesMaxWidth1414 ? `${item['description'].substring(0, 150)}...` : item['description']}
-                  </div>
-                  <div className={classes['genres']}>
+                  </div>}
+                  <div className={classes['genres']} style={{gap: '1.5rem', fontSize: mediaMatchesMaxWidth900 ? '.8rem' : '1rem'}}>
                     <span>Genres: </span>
-                    <div>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
                       {item['genre_ids'].map(id => <p>{getGenre(id, genres)}</p>)}
                     </div>
                   </div>

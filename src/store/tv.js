@@ -31,7 +31,8 @@ const tvSeriesSlice = createSlice({
                     'vote_average': item['vote_average'],
                     'first_air_date': item['first_air_date'].slice(0, 4),
                     'description': item['overview'],
-                    'genre_ids': item['genre_ids']
+                    'genre_ids': item['genre_ids'],
+                    'media_type': item['media_type']
                 }
             ))
         }
