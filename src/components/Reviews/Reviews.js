@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Stack } from '@mui/material'
+import { Stack, useMediaQuery } from '@mui/material'
 import { useEffect } from 'react'
 import { original } from '../../config/config'
 import { useState } from 'react'
@@ -13,6 +13,7 @@ const Reviews = () => {
 
   const [reviews, setReviews] = useState([])
 
+  const mediaMatchesMaxWidth900 = useMediaQuery('(max-width: 900px)')
 
   const reviewsEndpoint = `https://api.themoviedb.org/3/${showType}/${showId}/reviews?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
   
@@ -49,7 +50,7 @@ const Reviews = () => {
         Reviews
       </Typography>
       <Stack
-        direction="row"
+        direction={mediaMatchesMaxWidth900 ? 'column' : 'row'}
         flexWrap="wrap" sx={{ width: '100%', gap: '1.5rem'}}>
         {reviews.map(review => 
           <Review

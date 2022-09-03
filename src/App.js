@@ -8,6 +8,7 @@ import Tv from './components/Tv/Tv';
 import Search from './components/Search/Search';
 import MovieDetails from "./components/MovieDetails/MovieDetails";
 import AppLayout from "./components/sharedlayout/AppLayout";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return ( 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='/tv/:showType/:showId' element={<MovieDetails />} />
         </Routes>
       </main>
+      <Footer/>
     </div>
    );
 }

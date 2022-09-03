@@ -1,9 +1,10 @@
 import React from "react"
 import Video from "../Video/Video"
-import { Box } from "@mui/material"
+import { Box, Stack, Typography } from "@mui/material"
 import Credits from "../Credits/Credits"
 import Reviews from "../Reviews/Reviews"
 import { useParams } from "react-router-dom"
+import MovieDescription from "../MovieDescription/MovieDescription"
 
 
 const MovieDetails = () => {
@@ -15,11 +16,14 @@ const MovieDetails = () => {
     const recommendationsEndpoint = `https://api.themoviedb.org/3/${showType}/${showId}/recommendations?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
     const similarEndpoint = `https://api.themoviedb.org/3/${showType}/${showId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
     const trailerEndpoint = `https://api.themoviedb.org/3/${showType}/${showId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+
+    console.log(detailsEndpoint)
     
 
     return ( 
         <Box sx={{width: '100%'}}> 
             <Video />
+            <MovieDescription/>
             <Credits />
             <Reviews/>
         </Box>

@@ -2,6 +2,11 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({    
     typography: {
+        h1: {
+            fontFamily: "'Ubuntu', sans-serif",
+            fontWeight: 400,
+            fontSize: '2.5rem'
+        },
         h2: {
             fontFamily: "'Ubuntu', sans-serif",
             fontWeight: 300,

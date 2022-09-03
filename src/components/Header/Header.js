@@ -54,7 +54,8 @@ const Header = () => {
     return ( 
         <>
         <header className={classes.header} style={{
-            justifyContent: mediaMatchesMinWidth900 ? 'space-between' : mediaMatchesMaxWidth700 ? 'flex-end' : 'center'
+            justifyContent: mediaMatchesMinWidth900 ? 'space-between' : mediaMatchesMaxWidth700 ? 'flex-end' : 'center',
+            padding: mediaMatchesMaxWidth700 ? '0 1.5rem' : '0 3rem'
         }}>
             {mediaMatchesMinWidth900 && <p className={classes.logo}>MOVIE-FLEX</p>}
             {mediaMatchesMaxWidth700 && <IconButton onClick={openDrawer}><MenuIcon sx={{color: "white"}} /></IconButton>}

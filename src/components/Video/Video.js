@@ -16,7 +16,8 @@ const Video = () => {
       const fetchTrailer = async () => {
         const rawData = await fetch(trailerEndpoint)
         const data = await rawData.json()
-        const trailerId = data.results.find(item => item.name === 'Official Trailer') ? data.results.find(item => item.name === 'Official Trailer').key : data.results.find(item => item.type === 'Trailer').key
+        console.log(data)
+        const trailerId = data.results.find(item => item.name === 'Official Trailer') ? data.results.find(item => item.name === 'Official Trailer').key : data.results.find(item => item.type === 'Trailer') ? data.results.find(item => item.type === 'Trailer').key : ''
         setYoutubeUrl(`https://www.youtube.com/embed/${trailerId}`)
       }
 

@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import classes from './MovieCarousel.module.css';
 import { useSelector } from 'react-redux/es/exports';
 import { useMediaQuery } from '@mui/material';
+import StyledMovieCarousel from '../Styled/StyledMovieCarousel';
 
 
 const MovieCarousel = (props) => {
@@ -13,7 +14,7 @@ const MovieCarousel = (props) => {
     const mediaMatchesMaxWidth1000 = useMediaQuery('(max-width: 1000px)')
     const mediaMatchesMaxWidth900 = useMediaQuery('(max-width: 900px)')
     const mediaMatchesMaxWidth700 = useMediaQuery('(max-width: 700px)')
-
+    const mediaMatchesMaxWidth550 = useMediaQuery('(max-width: 550px)')
 
     const genres = useSelector(state => state.genres.genres)
 
@@ -28,19 +29,7 @@ const MovieCarousel = (props) => {
     }
 
       return (
-          <Carousel 
-            className={classes['carousel']}
-            ariaLabel='Carousel'
-            autoFocus={true}
-            autoPlay={true}
-            emulateTouch={true}
-            infiniteLoop={true}
-            interval={5000}
-            showThumbs={false}
-            transitionTime={500}
-            useKeyboardArrows={true}
-            showStatus={false}
-            >
+          <StyledMovieCarousel>
           
             {props.moviesSummary.map(item => {
             return <div className={classes['slide']}>
@@ -53,7 +42,7 @@ const MovieCarousel = (props) => {
                    paddingBottom: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '2.5rem' : '5rem' : '5rem',
                    gap: mediaMatchesMaxWidth700 ? '1rem' : '2rem'
                 }}>
-                  <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '1.5rem' : '2rem' : '3rem'}}>{item['title']}</h2>
+                  <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? mediaMatchesMaxWidth550 ? '1rem' : '1.5rem' : '2rem' : '3rem'}}>{item['title']}</h2>
                   <div style={{
                     width: mediaMatchesMaxWidth1000 ? '100%' : '30%',
                     gap: mediaMatchesMaxWidth1000 ? mediaMatchesMaxWidth700 ? '1rem' : '2rem' : '3rem'
@@ -75,7 +64,7 @@ const MovieCarousel = (props) => {
                 </div>
             </div>
             })}
-          </Carousel>
+          </StyledMovieCarousel>
       );
 };
 
