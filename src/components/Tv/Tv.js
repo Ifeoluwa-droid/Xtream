@@ -3,12 +3,12 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTvSeries, setPage, setTvSummary } from '../../store/tv'
 import { original, unavailable } from '../../config/config'
-import MovieCard from '../MovieCard/MovieCard'
+import MovieCard from '../moviecard/MovieCard'
 import classes from './Tv.module.css'
 import Pagination from '@mui/material/Pagination'
-import MovieCarousel from '../MovieCarousel/MovieCarousel'
-import useAxios from '../../../src/hooks/useAxios'
-import Header from '../Header/Header'
+import MovieCarousel from '../moviecarousel/MovieCarousel'
+import useAxios from '../../hooks/useAxios'
+import Header from '../header/Header'
 
 const Movies = () => {
     const dispatch = useDispatch()

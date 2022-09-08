@@ -1,10 +1,10 @@
 import React from "react"
-import Video from "../Video/Video"
+import Video from "../video/Video"
 import { Box, Stack, Typography } from "@mui/material"
-import Credits from "../Credits/Credits"
-import Reviews from "../Reviews/Reviews"
+import Credits from "../credits/Credits"
+import Reviews from "../reviews/Reviews"
 import { useParams } from "react-router-dom"
-import MovieDescription from "../MovieDescription/MovieDescription"
+import MovieDescription from "../moviedescription/MovieDescription"
 
 
 const MovieDetails = () => {

@@ -25,14 +25,14 @@ const Credits = () => {
         profile_path: info['profile_path'] ? original + info['profile_path'] : unavailable
     }))
 
-    const crewInfo = creditsData.crew.map(info => ({
-      department: info['known_for_department'],
-      character: info['character'],
-      name: info['original_name'],
-      profile_path: info['profile_path'] ? original + info['profile_path'] : unavailable
-    }))
+    // const crewInfo = creditsData.crew.map(info => ({
+    //   department: info['known_for_department'],
+    //   character: info['character'],
+    //   name: info['original_name'],
+    //   profile_path: info['profile_path'] ? original + info['profile_path'] : unavailable
+    // }))
 
-    setCreditInfo(castInfo.concat(crewInfo))
+    setCreditInfo(castInfo)
 }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Credits = () => {
   return (
     <Stack direction="column" spacing="1.5rem" sx={{marginTop: '5rem', padding: '0 2rem'}}>
       <Typography variant='h3' component='h3' color="white">
-        Cast & Crew
+        Cast
       </Typography>
       <Stack direction="row" alignItems="flex-start" justifyContent="flex-start" sx={{width: '100%', overflow: 'scroll', '&::-webkit-scrollbar': {
       display: 'none'

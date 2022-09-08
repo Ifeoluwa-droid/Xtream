@@ -1,0 +1,5 @@
+@media screen and (max-width: 587px) {
+  .copyright-info, .attribution {
+    font-size: .7rem !important;
+  }
+}

@@ -1,9 +1,12 @@
 .carousel {
     margin-bottom: 2rem;
+    cursor: pointer;
 }
 
 .slide {
     position: relative;
+    display: 'flex';
+    flex-direction: column
 }
 
 .blanket {
@@ -18,7 +21,6 @@
 
 .movie-summary {
     padding: 0 3rem;
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

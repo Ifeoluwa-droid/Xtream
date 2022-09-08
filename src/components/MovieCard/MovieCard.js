@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './MovieCard.module.css'
 import { useState } from 'react'
-import MovieTag from '../MovieTag/MovieTag'
+import MovieTag from '../movietag/MovieTag'
 import { Box, Rating, useMediaQuery } from '@mui/material'
 import { useSelector } from 'react-redux'
 import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp'

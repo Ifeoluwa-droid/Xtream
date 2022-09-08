@@ -1,6 +1,6 @@
 import React from "react"
 import { Pagination, Typography, Box, Skeleton, Stack, CircularProgress } from "@mui/material"
-import MovieCard from "../MovieCard/MovieCard"
+import MovieCard from "../moviecard/MovieCard"
 import classes from './Category.module.css'
 import { original } from "../../config/config"
 import { useCallback } from "react"
@@ -21,7 +21,7 @@ const Category = React.forwardRef((props, ref) => {
     })
 
     return ( 
-        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem', width: '100%'}} ref={ref}>
+        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem', width: '100%'}} className={classes['category']} ref={ref}>
             <Typography variant="h2" sx={{color: 'white'}} className={classes['category-heading']}>{props.categoryHeading}</Typography>
             <Box className={classes.movies}>
             {props.categoryMovies.map(movie => 
@@ -46,7 +46,7 @@ const Category = React.forwardRef((props, ref) => {
 export const CategorySkeleton = () => {
 
     return (
-        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem', width: '100%'}}>
+        <ColumnStack sx={{alignItems: 'flex-start', marginBottom: '4rem', padding: '2rem', gap: '3rem', width: '100%'}} className={classes['category-skeleton']}>
             <Typography
                 variant="h2"
                 width="60%"

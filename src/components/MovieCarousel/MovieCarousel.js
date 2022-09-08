@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import classes from './MovieCarousel.module.css';
-import { useSelector } from 'react-redux/es/exports';
-import { useMediaQuery } from '@mui/material';
-import StyledMovieCarousel from '../Styled/StyledMovieCarousel';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
+import { Carousel } from 'react-responsive-carousel'
+import classes from './MovieCarousel.module.css'
+import { useSelector } from 'react-redux/es/exports'
+import { useMediaQuery } from '@mui/material'
+import StyledMovieCarousel from '../styled/StyledMovieCarousel'
 
 
 const MovieCarousel = (props) => {
@@ -30,19 +30,19 @@ const MovieCarousel = (props) => {
 
       return (
           <StyledMovieCarousel>
-          
             {props.moviesSummary.map(item => {
             return <div className={classes['slide']}>
-                <img src={item['slide_image']} />
+                <img src={item['slide_image']} style={{width: '100%'}}/>
                 <div className={classes['blanket']}>
                   
                 </div>
-                <div className={classes['movie-summary']} style={{
+                {<div className={classes['movie-summary']} style={{
+                    position: mediaMatchesMaxWidth550 ? 'relative' : 'absolute',
                    justifyContent: mediaMatchesMaxWidth900 ? 'flex-end' : 'center',
                    paddingBottom: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '2.5rem' : '5rem' : '5rem',
                    gap: mediaMatchesMaxWidth700 ? '1rem' : '2rem'
                 }}>
-                  <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? mediaMatchesMaxWidth550 ? '1rem' : '1.5rem' : '2rem' : '3rem'}}>{item['title']}</h2>
+                  <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? mediaMatchesMaxWidth550 ? '1.5rem' : '1.5rem' : '2rem' : '3rem', textAlign: 'left'}}>{item['title']}</h2>
                   <div style={{
                     width: mediaMatchesMaxWidth1000 ? '100%' : '30%',
                     gap: mediaMatchesMaxWidth1000 ? mediaMatchesMaxWidth700 ? '1rem' : '2rem' : '3rem'
@@ -61,7 +61,7 @@ const MovieCarousel = (props) => {
                     </div>
                   </div>
                   {/* {props.trailer_path} */}
-                </div>
+                </div>}
             </div>
             })}
           </StyledMovieCarousel>

@@ -1,6 +1,6 @@
 import React from "react";
-import Drawer from "../Drawer/Drawer";
-import Header from "../Header/Header";
+import Drawer from "../drawer/Drawer";
+import Header from "../header/Header";
 import { useMediaQuery } from "@mui/material";
 
 const AppLayout = () => {

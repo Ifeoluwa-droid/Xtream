@@ -1,14 +1,14 @@
 import React from "react";
-import Header from "./components/Header/Header";
-import DiscoverMovies from "./components/Discover/Discover";
-import Movies from "./components/Movies/Movies";
+import Header from "./components/header/Header";
+import DiscoverMovies from "./components/discover/Discover";
+import Movies from "./components/movies/Movies";
 import './App.css';
 import {Routes, Route, Navigate} from 'react-router-dom';
-import Tv from './components/Tv/Tv';
-import Search from './components/Search/Search';
-import MovieDetails from "./components/MovieDetails/MovieDetails";
+import Tv from './components/tv/Tv';
+import Search from './components/search/Search';
+import MovieDetails from "./components/moviedetails/MovieDetails";
 import AppLayout from "./components/sharedlayout/AppLayout";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return ( 

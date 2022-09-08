@@ -2,13 +2,13 @@ import React, { useCallback, useRef, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setMovies, setPage, setMoviesSummary, setKidMoviesPage, setAnimations, setAnimationsPage } from '../../store/discover'
 import { setGenres } from '../../store/genre'
-import MovieCarousel from '../MovieCarousel/MovieCarousel'
-import Category from '../Category/Category'
+import MovieCarousel from '../moviecarousel/MovieCarousel'
+import Category from '../category/Category'
 import useAxios from '../../hooks/useAxios'
 import ColumnStack from '../ui/ColumnStack'
 import { getTrendingUrl, getTopKidMoviesUrl, getAnimationsUrl, movieGenresUrl, tvGenresUrl } from '../../utils/requests/endpoints'
-import { Skeleton, CircularProgress } from '@mui/material';
-import { CategorySkeleton } from '../Category/Category'
+import { Skeleton, CircularProgress } from '@mui/material'
+import { CategorySkeleton } from '../category/Category'
 
 const Movies = () => {
     const dispatch = useDispatch();
