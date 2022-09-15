@@ -33,13 +33,14 @@ const MovieCarousel = (props) => {
             {props.moviesSummary.map(item => {
             return <div className={classes['slide']}>
                 <img src={item['slide_image']} style={{width: '100%'}}/>
-                <div className={classes['blanket']}>
+                <div className={classes['blanket']} style={{backgroundImage: 'linear-gradient(to left, rgba(0, 0, 0, .5) 40%, black), linear-gradient(to bottom, rgba(0, 0, 0, .5) 70%, black)', opacity: mediaMatchesMaxWidth550 ? 0.1 : 0.7}}>
                   
                 </div>
                 {<div className={classes['movie-summary']} style={{
                     position: mediaMatchesMaxWidth550 ? 'relative' : 'absolute',
                    justifyContent: mediaMatchesMaxWidth900 ? 'flex-end' : 'center',
-                   paddingBottom: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '2.5rem' : '5rem' : '5rem',
+                   paddingTop: mediaMatchesMaxWidth550 && '2rem',
+                   paddingBottom: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? '2.5rem' : mediaMatchesMaxWidth550 ? '1.5rem' : '5rem' : '5rem',
                    gap: mediaMatchesMaxWidth700 ? '1rem' : '2rem'
                 }}>
                   <h2 className={classes['title']} style={{fontSize: mediaMatchesMaxWidth900 ? mediaMatchesMaxWidth700 ? mediaMatchesMaxWidth550 ? '1.5rem' : '1.5rem' : '2rem' : '3rem', textAlign: 'left'}}>{item['title']}</h2>

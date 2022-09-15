@@ -29,6 +29,19 @@ const MovieCard = props => {
     }
 
     const handleClick = (showId, mediaType) => {
+
+
+        const pathSlashes = location.pathname.match(/[/]/g)
+
+        if (pathSlashes.length > 2) {
+            if (mediaType === 'movie') {
+                navigate(`/movies/${mediaType}/${showId}`, {replace: true})
+            } else if (mediaType === 'tv') {
+                navigate(`/tv/${mediaType}/${showId}`, {replace: true})
+            }
+            return
+        }
+
         if (location.pathname.endsWith('/')) {
            navigate(`${location.pathname}${mediaType}/${showId}`)
         } else {

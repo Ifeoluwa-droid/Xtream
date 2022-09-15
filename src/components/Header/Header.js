@@ -12,12 +12,13 @@ import { Outlet } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu'
 import {IconButton} from '@mui/material'
 import { openDrawer as openReduxDrawer } from '../../store/drawer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedTab } from '../../store/tab'
  
 const Header = () => {
 
-    const [tabValue, setTabValue] = useState(0)
 
+    const tabValue = useSelector(state => state.tab.selectedTab)
 
     const mediaMatchesMinWidth900 = useMediaQuery('(min-width: 900px)')
     const mediaMatchesMaxWidth700 = useMediaQuery('(max-width: 700px)')
@@ -40,7 +41,7 @@ const Header = () => {
     // navigate(tabValueToRouteMap[tabValue], {replace: true});
 
     const tabValueChangeHandler = (event, newTabValue) => {
-        setTabValue(newTabValue);
+        dispatch(setSelectedTab(newTabValue))
         navigate(tabValueToRouteMap[newTabValue], {replace: true});
     }
 

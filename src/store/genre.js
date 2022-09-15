@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
@@ -19,8 +19,7 @@ const genreSlice= createSlice({
 });
 
 
-export const { setGenres } = genreSlice.actions;
-
-export default genreSlice.reducer;
+export const { setGenres } = genreSlice.actions
+export default genreSlice.reducer
 
 

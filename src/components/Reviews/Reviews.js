@@ -35,7 +35,7 @@ const Reviews = () => {
   useEffect(() => {
     fetchReviews()
     console.log(reviews)
-  }, [])
+  }, [showId])
 
   return (
     <Stack

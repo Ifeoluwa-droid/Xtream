@@ -3,7 +3,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import CircleIcon from '@mui/icons-material/Circle'
-import { Typography, Stack, Grid, IconButton, Box, useMediaQuery } from '@mui/material'
+import { Typography, Stack, Grid, IconButton, Box, useMediaQuery, Link } from '@mui/material'
 import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp'
 import classes from './Footer.module.css'
 
@@ -23,15 +23,21 @@ const Footer = () => {
           <p style={{fontFamily: "'Ubuntu', sans-serif", color: "white"}}>MOVIE-FLEX</p>
           <code style={{color: 'white'}}>Follow us</code>
           <Stack direction="row" alignItems="flex-start" spacing='1.5rem'>
+           <Link href="https://www.linkedin.com/in/ifeoluwa-faromika-67031318a">
             <IconButton>
               <LinkedInIcon sx={{color: "white"}}/>
             </IconButton>
+           </Link>
+           <Link href="https://github.com/Ifeoluwa-droid">
             <IconButton>
               <GitHubIcon sx={{color: "white"}}/>
             </IconButton>
+           </Link>
+          <Link>
             <IconButton>
               <TwitterIcon sx={{color: "white"}}/>
             </IconButton>
+          </Link>
           </Stack>
         </Stack>
         <Stack direction="column" spacing="1rem">

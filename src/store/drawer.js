@@ -17,5 +17,5 @@ const drawerSlice = createSlice({
 	},
 });
 
-export const { openDrawer, closeDrawer } = drawerSlice.actions;
-export default drawerSlice.reducer;
+export const { openDrawer, closeDrawer } = drawerSlice.actions
+export default drawerSlice.reducer

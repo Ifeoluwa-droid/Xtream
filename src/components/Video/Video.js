@@ -22,7 +22,7 @@ const Video = () => {
       }
 
       fetchTrailer()
-  }, [])
+  }, [showId])
 
   return <Box sx={{
     position: 'relative',

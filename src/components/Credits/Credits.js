@@ -37,7 +37,7 @@ const Credits = () => {
 
   useEffect(() => {
       fetchCredits()
-  }, [])
+  }, [showId])
 
   return (
     <Stack direction="column" spacing="1.5rem" sx={{marginTop: '5rem', padding: '0 2rem'}}>

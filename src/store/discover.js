@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { original } from "../config/config";
-import { current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
+import { original } from "../config/config"
+import { current } from "@reduxjs/toolkit"
 
 const initialState = {
     moviesData: {
@@ -72,5 +72,5 @@ const movieSlice = createSlice({
 });
 
 
-export const { setMovies, setPage, setMoviesSummary, setTopKidMovies, setKidMoviesPage, setAnimations, setAnimationsPage} = movieSlice.actions;
-export default movieSlice.reducer;
+export const { setMovies, setPage, setMoviesSummary, setTopKidMovies, setKidMoviesPage, setAnimations, setAnimationsPage} = movieSlice.actions
+export default movieSlice.reducer

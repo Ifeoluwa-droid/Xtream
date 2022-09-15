@@ -40,7 +40,7 @@ const Movies = () => {
     } 
     
     if (!isLoading && tvSummary.length !== 0 && tvSeriesData) {
-        content = <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        content = <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
                         {<MovieCarousel 
                             moviesSummary={tvSummary}
                         />}
@@ -61,7 +61,7 @@ const Movies = () => {
                                 />
                             )} 
                         </div>
-                        <Pagination sx={{marginTop: 5}} count={500} color='primary' onChange={handlePageChange}/>
+                        <Pagination sx={{marginTop: 5}} count={500} color='primary' onChange={handlePageChange} shape='rounded'/>
                         </div>
                         }
                     </div>

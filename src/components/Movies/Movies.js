@@ -45,7 +45,7 @@ const Movies = () => {
 
 	if (!isLoading && moviesSummary.length !== 0 && moviesData) {
 		content = (
-			<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+			<div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: '100%'}}>
 				{moviesSummary.length !== 0 && <MovieCarousel moviesSummary={moviesSummary} />}
 
 				{moviesData ? (
@@ -65,7 +65,10 @@ const Movies = () => {
 								/>
 							))}
 						</div>
-						<Pagination sx={{ marginTop: 5 }} count={500} color="primary" onChange={handlePageChange} />
+						<Pagination 
+							pageCount={500}
+							handlePageChange={handlePageChange}
+						/>
 					</div>
 				) : (
 					<div>Loading movies.....</div>

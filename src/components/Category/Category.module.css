@@ -18,10 +18,10 @@
 
 .category-heading::after {
     content: '';
-    background-color: #E94560;
+    background-color: #fff;
     position: absolute;
     left: 0;
-    bottom: -3px;
+    bottom: -5px;
     height: 3px;
     width: 60%
 }

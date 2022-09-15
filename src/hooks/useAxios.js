@@ -25,8 +25,8 @@ const useAxios = (url, ...dispatchFunctions) => {
   }, [url])  //// Since url is not declared as a react state it has to be a dependency in the useCallback function.
 
   useEffect(() => {
-      fetchData();
-  }, [fetchData]);
+      fetchData()
+  }, [fetchData])
  
   return {isLoading, fetchError}
 }

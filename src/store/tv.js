@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { original } from "../config/config";
+import { createSlice } from "@reduxjs/toolkit"
+import { original } from "../config/config"
 
 const initialState = {
     tvSeriesData: {
