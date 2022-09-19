@@ -1,6 +1,6 @@
 .main {
     padding: 0; /* 2rem; */
-    padding-bottom: 2rem;
+    /* padding-bottom: 2rem; */
     display: flex; 
     background-image: linear-gradient(to top right, rgba(0, 0, 0, 90%), rgba(0, 0, 0, 95%), rgba(0, 0, 0, 100%));
     background-attachment: fixed;

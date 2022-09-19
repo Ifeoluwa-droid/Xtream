@@ -58,7 +58,7 @@ const Header = () => {
             justifyContent: mediaMatchesMinWidth900 ? 'space-between' : mediaMatchesMaxWidth700 ? 'flex-end' : 'center',
             padding: mediaMatchesMaxWidth700 ? '0 1.5rem' : '0 3rem'
         }}>
-            {mediaMatchesMinWidth900 && <p className={classes.logo}>MOVIE-FLEX</p>}
+            {mediaMatchesMinWidth900 && <p className={classes.logo}>Xtream</p>}
             {mediaMatchesMaxWidth700 && <IconButton onClick={openDrawer}><MenuIcon sx={{color: "white"}} /></IconButton>}
             {!mediaMatchesMaxWidth700 && <Tabs value={tabValue} onChange={tabValueChangeHandler} centered>
                   <StyledTab 
@@ -86,7 +86,6 @@ const Header = () => {
 
             </div>}
         </header>
-        <Outlet/>
         </>
      );
 }

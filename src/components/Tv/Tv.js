@@ -40,7 +40,7 @@ const Movies = () => {
     } 
     
     if (!isLoading && tvSummary.length !== 0 && tvSeriesData) {
-        content = <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
+        content = <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', marginBottom: '2rem'}}>
                         {<MovieCarousel 
                             moviesSummary={tvSummary}
                         />}

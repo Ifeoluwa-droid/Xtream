@@ -12,6 +12,7 @@ const Footer = () => {
   const movieCategories = ['Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Horror', 'Mystery', 'Romance']
 
   const mediaMatchesMaxWidth670 = useMediaQuery('(max-width: 670px)')
+  const mediaMacthesMacWidth550 = useMediaQuery('(max-width: 550px')
 
   return (
     <footer style={{
@@ -20,8 +21,8 @@ const Footer = () => {
     }}>
       <Stack direction={mediaMatchesMaxWidth670 ? 'column' : 'row'} justifyContent='space-around' sx={{padding: "3rem", background: '#0F3460', gap: mediaMatchesMaxWidth670 ? '3rem' : '5rem'}} >
         <Stack direction="column" spacing="1rem">
-          <p style={{fontFamily: "'Ubuntu', sans-serif", color: "white"}}>MOVIE-FLEX</p>
-          <code style={{color: 'white'}}>Follow us</code>
+          <p style={{fontFamily: "'Ubuntu', sans-serif", color: "white"}}>Xtream</p>
+          <code style={{color: 'white'}}>Follow me</code>
           <Stack direction="row" alignItems="flex-start" spacing='1.5rem'>
            <Link href="https://www.linkedin.com/in/ifeoluwa-faromika-67031318a">
             <IconButton>
@@ -55,10 +56,10 @@ const Footer = () => {
         </Stack>
       </Stack>
       <Stack sx={{background: '#16213E', padding: '1.5rem'}} direction="row" justifyContent="space-between" alignItems='center'>
-        <Typography variant="h3" component="h3" color="white" className={classes['copyright-info']}>
+        <Typography variant="h3" component="h3" color="white" className={classes['copyright-info']} sx={{fontSize: mediaMacthesMacWidth550 && '.7rem'}}>
           Copyright &copy; 2022 <CircleIcon sx={{verticalAlign: 'middle', fontSize: ".5em", color: "#E94560", margin: '0 .5rem'}}/> All Rights Reserved
         </Typography>
-        <Typography color="white" className={classes['attribution']}>
+        <Typography color="white" className={classes['attribution']} sx={{fontSize: mediaMacthesMacWidth550 && '.7rem'}}>
           Made with <FavoriteBorderSharpIcon sx={{verticalAlign: 'middle', margin: '0 .5rem', color: '#E94560'}}/> by <Box sx={{display: 'inline-block', position: 'relative', '&::after': {
             content: '""',
             position: 'absolute',

@@ -8,6 +8,8 @@ import Search from './components/search/Search'
 import MovieDetails from "./components/moviedetails/MovieDetails"
 import AppLayout from "./components/sharedlayout/AppLayout"
 import Footer from "./components/footer/Footer"
+import SignIn from "./components/auth/SignIn"
+import AuthPage from "./pages/auth/AuthPage"
 
 const App = () => {
   return ( 
@@ -15,7 +17,7 @@ const App = () => {
       <main className='main'>
         <Routes>
           <Route path='/' element={<AppLayout />}>
-            <Route path="" element={<Navigate to="/discover" replace />} />
+            <Route path="" element={<Navigate to="auth" replace />} />
             <Route path='discover'>
               <Route path="" element={<DiscoverMovies/>}></Route>
             </Route>
@@ -30,6 +32,15 @@ const App = () => {
           <Route path='/discover/:showType/:showId' element={<MovieDetails />} />
           <Route path='/movies/:showType/:showId' element={<MovieDetails />} />
           <Route path='/tv/:showType/:showId' element={<MovieDetails />} />
+          <Route path='auth' element={<AuthPage/>}>
+              <Route path="" element={<Navigate to="/auth/sign-in" replace />} />
+              <Route path='sign-in'>
+                <Route path="" element={<SignIn/>}></Route>
+              </Route>
+              <Route path='sign-up'>
+                <Route path="" element={<SignIn/>}></Route>
+              </Route>
+            </Route>
         </Routes>
       </main>
       <Footer/>

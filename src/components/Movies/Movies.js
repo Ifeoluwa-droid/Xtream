@@ -49,7 +49,7 @@ const Movies = () => {
 				{moviesSummary.length !== 0 && <MovieCarousel moviesSummary={moviesSummary} />}
 
 				{moviesData ? (
-					<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: '2rem' }}>
 						<div className={classes.movies}>
 							{moviesData.movies.map((movie) => (
 								<MovieCard
