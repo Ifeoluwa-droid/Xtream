@@ -5,10 +5,10 @@ import { setMovies, setPage, setMoviesSummary } from "../../store/movie";
 import { original } from "../../config/config";
 import MovieCard from "../moviecard/MovieCard";
 import classes from "./Movies.module.css";
-import Pagination from "@mui/material/Pagination";
 import MovieCarousel from "../moviecarousel/MovieCarousel";
 import useAxios from "../../hooks/useAxios";
 import Header from "../header/Header";
+import Pagination from "../ui/Pagination";
 
 const Movies = () => {
 	const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const Movies = () => {
 				{moviesSummary.length !== 0 && <MovieCarousel moviesSummary={moviesSummary} />}
 
 				{moviesData ? (
-					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: '2rem' }}>
+					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: '2rem'}}>
 						<div className={classes.movies}>
 							{moviesData.movies.map((movie) => (
 								<MovieCard

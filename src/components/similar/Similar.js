@@ -32,7 +32,7 @@ const Similar = () => {
     window.scrollTo(0, 0)
   }, [showId])
 
-  const content = similarShows !== [] ? <Stack direction="column" spacing="1.5rem" sx={{marginTop: '5rem', padding: '0 2rem'}}>
+  const content = similarShows !== [] ? <Stack direction="column" spacing="1.5rem" sx={{marginTop: '5rem', padding: '0 2rem', marginBottom: '2rem'}}>
   <Typography variant='h3' component='h3' color="white">
     You might also like
   </Typography>

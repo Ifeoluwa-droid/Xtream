@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useContext} from "react"
 import DiscoverMovies from "./components/discover/Discover"
 import Movies from "./components/movies/Movies"
 import './App.css'
@@ -10,14 +10,18 @@ import AppLayout from "./components/sharedlayout/AppLayout"
 import Footer from "./components/footer/Footer"
 import SignIn from "./components/auth/SignIn"
 import AuthPage from "./pages/auth/AuthPage"
+import { AuthContext } from "./store/auth"
 
 const App = () => {
+
+  const authCtx = useContext(AuthContext)
+
   return ( 
     <div>
       <main className='main'>
         <Routes>
           <Route path='/' element={<AppLayout />}>
-            <Route path="" element={<Navigate to="auth" replace />} />
+            <Route path="" element={<Navigate to="discover" replace />} />
             <Route path='discover'>
               <Route path="" element={<DiscoverMovies/>}></Route>
             </Route>
@@ -32,7 +36,7 @@ const App = () => {
           <Route path='/discover/:showType/:showId' element={<MovieDetails />} />
           <Route path='/movies/:showType/:showId' element={<MovieDetails />} />
           <Route path='/tv/:showType/:showId' element={<MovieDetails />} />
-          <Route path='auth' element={<AuthPage/>}>
+          {!authCtx.isLoggedIn && <Route path='/auth' element={<AuthPage/>}>
               <Route path="" element={<Navigate to="/auth/sign-in" replace />} />
               <Route path='sign-in'>
                 <Route path="" element={<SignIn/>}></Route>
@@ -40,7 +44,8 @@ const App = () => {
               <Route path='sign-up'>
                 <Route path="" element={<SignIn/>}></Route>
               </Route>
-            </Route>
+          </Route>}
+          {/* <Route path='*' element ={} /> */}
         </Routes>
       </main>
       <Footer/>

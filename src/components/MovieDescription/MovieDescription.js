@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState, useContext } from 'react'
 import {Box, Typography, Stack, Rating, Grid, IconButton, useMediaQuery} from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import GenreTag from './GenreTag'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
+import TaskAltIcon from '@mui/icons-material/TaskAlt'
+import { AuthContext } from '../../store/auth'
 
 
 const MovieDescription = () => {
@@ -23,6 +24,10 @@ const MovieDescription = () => {
   })
 
   const detailsEndpoint = `https://api.themoviedb.org/3/${showType}/${showId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+
+  const authCtx = useContext(AuthContext)
+
+  const userIsLoggedIn = authCtx.isLoggedIn
 
   useEffect(() => {
     
@@ -81,14 +86,14 @@ const MovieDescription = () => {
             )}
           </Stack>
         </Grid>
-        <Grid item xs={12} md={6}>
+        {userIsLoggedIn && <Grid item xs={12} md={6}>
           <Stack direction="row" spacing=".5rem" alignItems="center">
               <IconButton><AddCircleOutlineIcon sx={{color: "green"}}/></IconButton>
               <Typography variant="h3" component="h3" color="white" sx={{fontSize: mediaMatchesMaxWidth550 && '.8rem'}}>
                 Add to WatchList
               </Typography>
           </Stack>
-        </Grid>
+        </Grid>}
       </Grid>
     </Box>
   )

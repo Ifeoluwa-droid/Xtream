@@ -12,7 +12,7 @@ const Footer = () => {
   const movieCategories = ['Action', 'Adventure', 'Comedy', 'Crime', 'Drama', 'Horror', 'Mystery', 'Romance']
 
   const mediaMatchesMaxWidth670 = useMediaQuery('(max-width: 670px)')
-  const mediaMacthesMacWidth550 = useMediaQuery('(max-width: 550px')
+  const mediaMatchesMaxWidth550 = useMediaQuery('(max-width: 550px')
 
   return (
     <footer style={{
@@ -42,7 +42,7 @@ const Footer = () => {
           </Stack>
         </Stack>
         <Stack direction="column" spacing="1rem">
-          <Typography variant='h2' component='h2' color="white" sx={{fontSize: '1.5rem'}}>Movie Categories +</Typography>
+          <Typography variant='h2' component='h2' color="white" sx={{fontSize: mediaMatchesMaxWidth550 ? '1rem' : '1.5rem'}}>Movie Categories +</Typography>
           <Grid container rowSpacing={1} columnSpacing='1rem'>
             {movieCategories.map(category => 
               <Grid item xs={6}>
@@ -56,10 +56,10 @@ const Footer = () => {
         </Stack>
       </Stack>
       <Stack sx={{background: '#16213E', padding: '1.5rem'}} direction="row" justifyContent="space-between" alignItems='center'>
-        <Typography variant="h3" component="h3" color="white" className={classes['copyright-info']} sx={{fontSize: mediaMacthesMacWidth550 && '.7rem'}}>
+        <Typography variant="h3" component="h3" color="white" className={classes['copyright-info']} sx={{fontSize: mediaMatchesMaxWidth550 && '.5rem'}}>
           Copyright &copy; 2022 <CircleIcon sx={{verticalAlign: 'middle', fontSize: ".5em", color: "#E94560", margin: '0 .5rem'}}/> All Rights Reserved
         </Typography>
-        <Typography color="white" className={classes['attribution']} sx={{fontSize: mediaMacthesMacWidth550 && '.7rem'}}>
+        <Typography color="white" className={classes['attribution']} sx={{fontSize: mediaMatchesMaxWidth550 && '.5rem'}}>
           Made with <FavoriteBorderSharpIcon sx={{verticalAlign: 'middle', margin: '0 .5rem', color: '#E94560'}}/> by <Box sx={{display: 'inline-block', position: 'relative', '&::after': {
             content: '""',
             position: 'absolute',

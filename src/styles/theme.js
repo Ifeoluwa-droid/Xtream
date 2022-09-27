@@ -16,6 +16,11 @@ const theme = createTheme({
             fontFamily: "'Ubuntu', sans-serif",
             fontWeight: 300,
             fontSize: '1rem'
+        },
+        h4: {
+            fontFamily: "'Ubuntu', sans-serif",
+            fontWeight: 300,
+            fontSize: '.8rem'
         }
     },
 

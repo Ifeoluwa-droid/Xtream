@@ -1,16 +1,12 @@
+import { PropaneSharp } from '@mui/icons-material';
 import React from 'react'
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
-const InputField = ({
-  label,
-  type
-}) => {
 
-  const Input = styled(({type}) => (
-    <input type={type}/>
-  ))`
+
+const Input = styled.input`
     display: block;
-    color: white;
+    color: ${props => props.color || 'white'};
     width: 100%;
     height: 3rem;
     border: 1px solid grey;
@@ -24,10 +20,19 @@ const InputField = ({
     }
   `;
 
+const InputField = ({
+  label,
+  labelColor,
+  type,
+  onChange,
+  inputColor,
+  value
+}) => {
+
   return (
     <div style={{width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '.5rem'}}>
-      <label style={{color: 'white'}}>{label}</label>
-      <Input type={type}/>
+      <label style={{color: labelColor || 'white'}}>{label}</label>
+      <Input type={type} onChange={onChange} color={inputColor} value={value}/>
     </div>
   )
 }

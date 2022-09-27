@@ -5,10 +5,10 @@ import { setTvSeries, setPage, setTvSummary } from '../../store/tv'
 import { original, unavailable } from '../../config/config'
 import MovieCard from '../moviecard/MovieCard'
 import classes from './Tv.module.css'
-import Pagination from '@mui/material/Pagination'
 import MovieCarousel from '../moviecarousel/MovieCarousel'
 import useAxios from '../../hooks/useAxios'
 import Header from '../header/Header'
+import Pagination from '../ui/Pagination'
 
 const Movies = () => {
     const dispatch = useDispatch()
@@ -61,7 +61,10 @@ const Movies = () => {
                                 />
                             )} 
                         </div>
-                        <Pagination sx={{marginTop: 5}} count={500} color='primary' onChange={handlePageChange} shape='rounded'/>
+                        <Pagination
+                            pageCount={500}
+                            handlePageChange={handlePageChange}
+                        />
                         </div>
                         }
                     </div>

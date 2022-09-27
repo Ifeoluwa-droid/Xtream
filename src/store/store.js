@@ -6,6 +6,7 @@ import genreReducer from './genre'
 import drawerReducer from './drawer'
 import similarMoviesReducer from './similar'
 import tabReducer from './tab'
+import emailSignUpReducer from "./emailSignUp"
 
 
 const store = configureStore({
@@ -16,7 +17,8 @@ const store = configureStore({
         genres: genreReducer,
         drawer: drawerReducer,
         similar: similarMoviesReducer,
-        tab: tabReducer
+        tab: tabReducer,
+        emailSignUp: emailSignUpReducer
     }
 })
 

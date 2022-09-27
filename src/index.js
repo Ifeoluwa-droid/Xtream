@@ -7,18 +7,21 @@ import store from './store/store'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 import theme from './styles/theme'
+import { AuthContextProvider } from './store/auth'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
   <ReduxProvider store={store}>
-    <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-      </ThemeProvider>
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthContextProvider>
   </ReduxProvider>
 );
 
